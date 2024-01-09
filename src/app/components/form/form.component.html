@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="grid">
+    <div>
+      <label>
+        <span>Name</span>
+        <input type="text" formControlName="name"></label>
+    </div>
+    <div>
+      <label>
+        <span>Surname</span>
+        <input type="text" formControlName="surname"></label>
+    </div>
+    <div>
+      <label for="gender">Gender</label>
+      <select id="gender" formControlName="gender">
+        <option [value]="genderEnum.Male">Male</option>
+        <option [value]="genderEnum.Female">Female</option>
+        <option [value]="genderEnum.Other">Other</option>
+      </select>
+    </div>
+    <div>
+      <label>
+        <span>Street</span>
+        <input type="text" formControlName="street"></label>
+    </div>
+    <div>
+      <label>
+        <span>Number</span>
+        <input type="text" formControlName="number"></label>
+    </div>
+    <div>
+      <label>
+        <span>City</span>
+        <input type="text" formControlName="city"></label>
+    </div>
+    <div>
+      <label>
+        <span>Phone number</span>
+        <input type="text" formControlName="phoneNumber"></label>
+    </div>
+    <div>
+      <label>
+        <span>Email</span>
+        <input type="text" formControlName="email"></label>
+    </div>
+  </div>
+
+  <div class="btn-wrapper">
+    <button type="submit">Save</button>
+  </div>
+
+</form>

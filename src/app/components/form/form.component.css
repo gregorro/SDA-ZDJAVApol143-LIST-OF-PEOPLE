@@ -1,0 +1,16 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+label > *,
+label + select {
+  display: block;
+}
+
+
+.btn-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+}
