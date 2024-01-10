@@ -32,7 +32,7 @@ const mockData: BaseUserData[] = [
 export class ListComponent {
   genderEnum: typeof Gender = Gender
 
-  isReadyToRender: boolean = false;
+  isReadyToRender: boolean = true;
   userData: BaseUserData[] = mockData
   value: number = 5
 }

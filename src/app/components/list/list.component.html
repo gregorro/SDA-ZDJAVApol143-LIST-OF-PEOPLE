@@ -1,11 +1,12 @@
 <div *ngIf="isReadyToRender;else elseDefinition" class="data-wrapper">
-  <p *ngFor="let user of userData; index as i">Lp. {{i+1}} - {{user.name}} {{user.surname}}
+  <p [ngClass]="{odd: (i+1)%2===0, even: (i+1)%2!==0}" *ngFor="let user of userData; index as i">Lp. {{i+1}} -
     <ng-container [ngSwitch]="user.gender">
-      <ng-container *ngSwitchCase="genderEnum.Male">Male</ng-container>
-      <ng-container *ngSwitchCase="genderEnum.Female">Female</ng-container>
-      <ng-container *ngSwitchCase="genderEnum.Other">Other</ng-container>
+      <ng-container *ngSwitchCase="genderEnum.Male">Mr</ng-container>
+      <ng-container *ngSwitchCase="genderEnum.Female">Mrs</ng-container>
+      <ng-container *ngSwitchCase="genderEnum.Other"></ng-container>
       <ng-container *ngSwitchDefault>Invalid data!</ng-container>
     </ng-container>
+    {{user.name}} {{user.surname}}
   </p>
 </div>
 <ng-template #elseDefinition>
