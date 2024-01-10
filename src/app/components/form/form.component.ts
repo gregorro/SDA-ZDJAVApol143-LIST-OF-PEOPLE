@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 
 export enum Gender {
   Male,
   Female,
   Other
+}
+
+export interface UserData {
+  name: string;
+  surname: string;
+  gender: Gender;
+  street: string;
+  number: string;
+  city: string;
+  phoneNumber: string;
+  email: string
+  dateOfBirth: string
 }
 
 @Component({
@@ -15,6 +27,9 @@ export enum Gender {
   styleUrl: './form.component.css'
 })
 export class FormComponent {
+
+  @Output() emitNewUserData = new EventEmitter<UserData>()
+
   genderEnum: typeof Gender = Gender
 
   form = new FormGroup({
@@ -42,15 +57,23 @@ export class FormComponent {
     email: new FormControl<string>('', [
       Validators.required,
       Validators.email
+    ]),
+    dateOfBirth: new FormControl<string>('', [
+      Validators.required,
     ])
   })
 
   onSubmit(){
-    const {errors, valid, value} = this.form
+    const {valid, value} = this.form
 
-    console.log(`Czy formularz jest zwalidowany? - ${valid ? 'Tak' : 'Nie'}`)
-    console.log(`Globalne errory:`, errors)
-    console.log(`Wartości:`, value)
+    if(valid){
+      const userData: UserData = value as UserData;
+      this.emitNewUserData.emit(userData)
+      this.form.reset()
+    } else {
+      alert('Niepoprawnie wypełniony formularz!')
+    }
+
   }
 
 }

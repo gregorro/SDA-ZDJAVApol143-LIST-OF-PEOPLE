@@ -1,14 +1,5 @@
-<div *ngIf="isReadyToRender;else elseDefinition" class="data-wrapper">
-  <p [ngClass]="{odd: (i+1)%2===0, even: (i+1)%2!==0}" *ngFor="let user of userData; index as i">Lp. {{i+1}} -
-    <ng-container [ngSwitch]="user.gender">
-      <ng-container *ngSwitchCase="genderEnum.Male">Mr</ng-container>
-      <ng-container *ngSwitchCase="genderEnum.Female">Mrs</ng-container>
-      <ng-container *ngSwitchCase="genderEnum.Other"></ng-container>
-      <ng-container *ngSwitchDefault>Invalid data!</ng-container>
-    </ng-container>
-    {{user.name}} {{user.surname}}
-  </p>
-</div>
-<ng-template #elseDefinition>
-  <b>Data is no ready to render!</b>
-</ng-template>
+<!-- // Renderujemy liste osob za pomoca *ngFor - jako tabele
+// Renderujemy przedrostek Mr lub Mrs za pomoca ngSwitch
+//* Kolorujemy wiersze osób powyzej 18 lat na czerwono - najlepiej za pomoca metody
+//** Przemyslec lub spróbowac zaimplementowac mechanizm wyszukiwania po kolumnie np 'name'
+ -->

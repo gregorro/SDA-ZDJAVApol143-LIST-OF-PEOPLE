@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { FormComponent } from './components/form/form.component';
+import { FormComponent, UserData } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 
 @Component({
@@ -13,4 +13,9 @@ import { ListComponent } from './components/list/list.component';
 })
 export class AppComponent {
   author = 'Grzegorz';
+  usersData: UserData[] = []
+
+  addUserData(currentUserData: UserData): void {
+    this.usersData.push(currentUserData)
+  }
 }

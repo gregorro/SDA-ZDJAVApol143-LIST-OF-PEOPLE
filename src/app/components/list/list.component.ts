@@ -1,26 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Gender } from '../form/form.component';
-
-interface BaseUserData {
-  name: string;
-  surname: string;
-  gender: Gender
-}
-
-const mockData: BaseUserData[] = [
-  {
-    name: 'Aleksandra',
-    surname: 'Olejniczak',
-    gender: Gender.Female
-  },
-  {
-    name: "Krystian",
-    surname: 'Kowalski',
-    gender: Gender.Male
-  }
-]
-
+import { Component, Input } from '@angular/core';
+import { Gender, UserData } from '../form/form.component';
 
 @Component({
   selector: 'app-list',
@@ -30,9 +10,12 @@ const mockData: BaseUserData[] = [
   styleUrl: './list.component.css'
 })
 export class ListComponent {
-  genderEnum: typeof Gender = Gender
 
-  isReadyToRender: boolean = true;
-  userData: BaseUserData[] = mockData
-  value: number = 5
+  @Input({
+    required: true
+  }) data: UserData[] = []
+
+  date: Date = new Date()
+
+  genderEnum: typeof Gender = Gender
 }

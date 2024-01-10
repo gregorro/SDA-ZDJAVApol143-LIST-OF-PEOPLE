@@ -2,8 +2,8 @@
   <h1>List of people</h1>
 </header>
 <main>
-<app-form></app-form>
-<app-list></app-list>
+  <app-form (emitNewUserData)="addUserData($event)"></app-form>
+  <app-list [data]="usersData"></app-list>
 </main>
 <footer>
   <small>Created by {{author}}</small>
