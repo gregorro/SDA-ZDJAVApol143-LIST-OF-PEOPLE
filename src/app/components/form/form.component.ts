@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 
-enum Gender {
+export enum Gender {
   Male,
   Female,
   Other
 }
-
 
 @Component({
   selector: 'app-form',
@@ -50,7 +49,7 @@ export class FormComponent {
     const {errors, valid, value} = this.form
 
     console.log(`Czy formularz jest zwalidowany? - ${valid ? 'Tak' : 'Nie'}`)
-    console.log(`Errory:`, errors)
+    console.log(`Globalne errory:`, errors)
     console.log(`Wartości:`, value)
   }
 

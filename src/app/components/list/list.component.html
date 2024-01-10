@@ -1,1 +1,13 @@
-<p>list works!</p>
+<div *ngIf="isReadyToRender;else elseDefinition" class="data-wrapper">
+  <p *ngFor="let user of userData; index as i">Lp. {{i+1}} - {{user.name}} {{user.surname}}
+    <ng-container [ngSwitch]="user.gender">
+      <ng-container *ngSwitchCase="genderEnum.Male">Male</ng-container>
+      <ng-container *ngSwitchCase="genderEnum.Female">Female</ng-container>
+      <ng-container *ngSwitchCase="genderEnum.Other">Other</ng-container>
+      <ng-container *ngSwitchDefault>Invalid data!</ng-container>
+    </ng-container>
+  </p>
+</div>
+<ng-template #elseDefinition>
+  <b>Data is no ready to render!</b>
+</ng-template>
