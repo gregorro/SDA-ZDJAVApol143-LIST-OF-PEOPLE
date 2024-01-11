@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { FormComponent, UserData } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,4 +19,5 @@ export class AppComponent {
   addUserData(currentUserData: UserData): void {
     this.usersData.push(currentUserData)
   }
+
 }

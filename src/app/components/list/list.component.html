@@ -3,3 +3,43 @@
 //* Kolorujemy wiersze osób powyzej 18 lat na czerwono - najlepiej za pomoca metody
 //** Przemyslec lub spróbowac zaimplementowac mechanizm wyszukiwania po kolumnie np 'name'
  -->
+
+ <table>
+  <thead>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Gender</th>
+    <th>Street</th>
+    <th>Number</th>
+    <th>City</th>
+    <th>Phone number</th>
+    <th>Email</th>
+    <th>Date of birth</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of data; index as i" [ngClass]="{adult: isAdult(user.dateOfBirth)}">
+      <td>
+        <ng-container [ngSwitch]="+user.gender">
+          <ng-container *ngSwitchCase="genderEnum.Male">Mr</ng-container>
+          <ng-container *ngSwitchCase="genderEnum.Female">Mrs</ng-container>
+        </ng-container>
+        {{user.name}}
+      </td>
+      <td>{{user.surname}}</td>
+      <td>
+        <ng-container [ngSwitch]="+user.gender">
+          <ng-container *ngSwitchCase="genderEnum.Male">Male</ng-container>
+          <ng-container *ngSwitchCase="genderEnum.Female">Female</ng-container>
+          <ng-container *ngSwitchCase="genderEnum.Other">Other</ng-container>
+          <ng-container *ngSwitchDefault>Invalid data!</ng-container>
+        </ng-container>
+      </td>
+      <td>{{user.street}}</td>
+      <td>{{user.number}}</td>
+      <td>{{user.city}}</td>
+      <td>{{user.phoneNumber}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.dateOfBirth}}</td>
+    </tr>
+  </tbody>
+ </table>

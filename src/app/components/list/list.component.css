@@ -1,7 +1,7 @@
-.odd {
-  color: green;
+table, th, td {
+  border: 1px solid black;
 }
 
-.even {
-  color: red;
+.adult {
+  background-color: red;
 }
