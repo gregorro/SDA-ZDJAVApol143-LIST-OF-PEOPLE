@@ -72,8 +72,8 @@ export class AppComponent {
   }
 
 
-  removeUser(user: UserData): void {
-    // TODO
+  removeUser(uid: string): void {
+    this.usersData = this.usersData.filter(user => user.uid !== uid)
   }
 
 }

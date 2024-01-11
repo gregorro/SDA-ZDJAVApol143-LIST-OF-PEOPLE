@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import {v4} from 'uuid'
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
+import { v4 } from 'uuid'
 
 export enum Gender {
   Male,
@@ -65,11 +65,11 @@ export class FormComponent {
     ])
   })
 
-  onSubmit(){
-    const {valid, value} = this.form
+  onSubmit() {
+    const { valid, value } = this.form
 
-    if(valid){
-      const userData: UserData = {...value, uid: v4()} as UserData;
+    if (valid) {
+      const userData: UserData = { ...value, uid: v4() } as UserData;
       this.emitNewUserData.emit(userData)
       this.form.reset()
     } else {
@@ -78,4 +78,22 @@ export class FormComponent {
 
   }
 
+  getErrorLabels(formControl: AbstractControl<any,any> | null): string {
+    const errors: ValidationErrors | null = formControl?.errors || null
+    if (!errors) {
+      return ''
+    }
+
+    return Object.keys(errors).reduce<string[]>((collector: string[], errorKey: string) => {
+      switch (errorKey) {
+        case 'required':
+          collector.push('This field is required!')
+          break;
+        case 'email':
+          collector.push('This is not valid email!')
+          break;
+      }
+      return collector;
+    }, []).join('; ')
+  }
 }

@@ -14,3 +14,7 @@ label + select {
   display: flex;
   justify-content: end;
 }
+
+.error-wrapper {
+  color: red;
+}

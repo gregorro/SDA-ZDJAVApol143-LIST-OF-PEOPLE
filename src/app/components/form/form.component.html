@@ -4,6 +4,7 @@
       <label>
         <span>Name</span>
         <input type="text" formControlName="name"></label>
+        <small class="error-wrapper">{{getErrorLabels(form.get('name'))}}</small>
     </div>
     <div>
       <label>
@@ -42,6 +43,7 @@
       <label>
         <span>Email</span>
         <input type="text" formControlName="email"></label>
+        <small class="error-wrapper">{{getErrorLabels(form.get('email'))}}</small>
     </div>
     <div>
       <label>

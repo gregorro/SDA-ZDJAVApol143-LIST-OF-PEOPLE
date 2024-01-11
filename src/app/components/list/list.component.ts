@@ -15,7 +15,7 @@ const ADULT_YEARS_NUMBER = 18
 })
 export class ListComponent {
 
-  @Output() removeUser = new EventEmitter<UserData>()
+  @Output() removeUser = new EventEmitter<string>()
 
   @Input() data: readonly UserData[] = []
 
@@ -44,6 +44,10 @@ export class ListComponent {
         return true
     }
     return false
+  }
+
+  onDeleteHandler(uid: string): void {
+    this.removeUser.emit(uid)
   }
 
 
