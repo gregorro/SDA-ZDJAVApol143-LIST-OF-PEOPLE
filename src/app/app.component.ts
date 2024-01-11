@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormComponent, UserData } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
+import { v4 } from 'uuid';
 
 const mockData: UserData[] = [
   {
+    uid: v4(),
     "name": "Adam",
     "surname": "Kikut",
     "gender": 0,
@@ -17,6 +19,7 @@ const mockData: UserData[] = [
     "dateOfBirth": "2024-01-23"
   },
   {
+    uid: v4(),
     "name": "Krystian",
     "surname": "Kikut",
     "gender": 0,
@@ -28,6 +31,7 @@ const mockData: UserData[] = [
     "dateOfBirth": "2024-01-02"
   },
   {
+    uid: v4(),
     "name": "Piotr",
     "surname": "Kikut",
     "gender": 2,
@@ -39,6 +43,7 @@ const mockData: UserData[] = [
     "dateOfBirth": "2024-01-22"
   },
   {
+    uid: v4(),
     "name": "Piotr",
     "surname": "Kowalski",
     "gender": 2,

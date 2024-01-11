@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import {v4} from 'uuid'
 
 export enum Gender {
   Male,
@@ -8,6 +9,7 @@ export enum Gender {
 }
 
 export interface UserData {
+  uid: string;
   name: string;
   surname: string;
   gender: Gender;
@@ -67,7 +69,7 @@ export class FormComponent {
     const {valid, value} = this.form
 
     if(valid){
-      const userData: UserData = value as UserData;
+      const userData: UserData = {...value, uid: v4()} as UserData;
       this.emitNewUserData.emit(userData)
       this.form.reset()
     } else {

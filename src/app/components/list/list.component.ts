@@ -33,7 +33,12 @@ export class ListComponent {
   }
 
   renderTest(user: UserData): boolean {
+    const keysWithoutSearching = ['uid']
     for (let key in user) {
+      if(keysWithoutSearching.includes(key)){
+        continue;
+      }
+
       const testValue: boolean = new RegExp(`${this.searchValue.toLowerCase()}`).test((user[key as keyof UserData]).toString().toLowerCase())
       if (testValue)
         return true
