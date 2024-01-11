@@ -4,6 +4,52 @@ import { RouterOutlet } from '@angular/router';
 import { FormComponent, UserData } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 
+const mockData: UserData[] = [
+  {
+    "name": "Adam",
+    "surname": "Kikut",
+    "gender": 0,
+    "street": "Poznańska",
+    "number": "13",
+    "city": "Warszawa",
+    "phoneNumber": "232314124",
+    "email": "greg@gmail.com",
+    "dateOfBirth": "2024-01-23"
+  },
+  {
+    "name": "Krystian",
+    "surname": "Kikut",
+    "gender": 0,
+    "street": "Kowalska",
+    "number": "34",
+    "city": "Warszawa",
+    "phoneNumber": "515789657",
+    "email": "greg@gmail.com",
+    "dateOfBirth": "2024-01-02"
+  },
+  {
+    "name": "Piotr",
+    "surname": "Kikut",
+    "gender": 2,
+    "street": "Poznańska",
+    "number": "13",
+    "city": "Kraków",
+    "phoneNumber": "515789657",
+    "email": "greg@gmail.com",
+    "dateOfBirth": "2024-01-22"
+  },
+  {
+    "name": "Piotr",
+    "surname": "Kowalski",
+    "gender": 2,
+    "street": "Poznańska",
+    "number": "13",
+    "city": "Kraków",
+    "phoneNumber": "515789657",
+    "email": "greg@gmail.com",
+    "dateOfBirth": "2024-01-22"
+  }
+]
 
 @Component({
   selector: 'app-root',
@@ -14,7 +60,7 @@ import { ListComponent } from './components/list/list.component';
 })
 export class AppComponent {
   author = 'Grzegorz';
-  usersData: UserData[] = []
+  usersData: UserData[] = mockData;
 
   addUserData(currentUserData: UserData): void {
     this.usersData.push(currentUserData)
