@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Gender, UserData } from '../form/form.component';
-import dayjs, {type Dayjs} from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { FormsModule } from '@angular/forms';
 
 const ADULT_YEARS_NUMBER = 18
@@ -15,7 +15,9 @@ const ADULT_YEARS_NUMBER = 18
 })
 export class ListComponent {
 
-  @Input() data: UserData[] = []
+  @Output() removeUser = new EventEmitter<UserData>()
+
+  @Input() data: readonly UserData[] = []
 
   searchValue: string = ''
 
@@ -30,8 +32,14 @@ export class ListComponent {
     return diff >= ADULT_YEARS_NUMBER
   }
 
-  renderTest(name: string): boolean{
-    return new RegExp(`${this.searchValue.toLowerCase()}`).test(name.toLowerCase())
+  renderTest(user: UserData): boolean {
+    for (let key in user) {
+      const testValue: boolean = new RegExp(`${this.searchValue.toLowerCase()}`).test((user[key as keyof UserData]).toString().toLowerCase())
+      if (testValue)
+        return true
+    }
+    return false
   }
+
 
 }

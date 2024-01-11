@@ -3,7 +3,7 @@
 </header>
 <main>
   <app-form (emitNewUserData)="addUserData($event)"></app-form>
-  <app-list [data]="usersData"></app-list>
+  <app-list [data]="usersData" (removeUser)="removeUser($event)"></app-list>
 </main>
 <footer>
   <small>Created by {{author}}</small>

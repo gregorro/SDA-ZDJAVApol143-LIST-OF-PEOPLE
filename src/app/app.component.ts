@@ -66,4 +66,9 @@ export class AppComponent {
     this.usersData.push(currentUserData)
   }
 
+
+  removeUser(user: UserData): void {
+    // TODO
+  }
+
 }

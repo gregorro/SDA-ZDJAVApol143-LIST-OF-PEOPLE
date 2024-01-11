@@ -10,6 +10,7 @@
 
 <table>
   <thead>
+    <th>Nr</th>
     <th>Name</th>
     <th>Surname</th>
     <th>Gender</th>
@@ -19,10 +20,14 @@
     <th>Phone number</th>
     <th>Email</th>
     <th>Date of birth</th>
+    <th>Actions</th>
   </thead>
   <tbody>
-    <ng-container *ngFor="let user of data;">
-      <tr *ngIf="renderTest(user.name)" [ngClass]="{adult: isAdult(user.dateOfBirth)}">
+    <ng-container *ngFor="let user of data; index as i">
+      <tr *ngIf="renderTest(user)" [ngClass]="{adult: isAdult(user.dateOfBirth)}">
+        <td>
+          {{i +1}}
+        </td>
         <td >
           <ng-container [ngSwitch]="+user.gender">
             <ng-container *ngSwitchCase="genderEnum.Male">Mr</ng-container>
@@ -45,6 +50,7 @@
         <td>{{user.phoneNumber}}</td>
         <td>{{user.email}}</td>
         <td>{{user.dateOfBirth}}</td>
+        <td><button>Delete</button></td>
       </tr>
     </ng-container>
   </tbody>
